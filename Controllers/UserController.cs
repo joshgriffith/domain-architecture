@@ -3,8 +3,7 @@ using DomainArchitecture.Infrastructure.Authentication;
 using DomainArchitecture.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DomainArchitecture.Controllers
-{
+namespace DomainArchitecture.Controllers {
 
     [Route("users")]
     public class UserController : ControllerBase {

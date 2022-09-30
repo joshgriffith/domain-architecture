@@ -18,11 +18,15 @@ namespace DomainArchitecture.Infrastructure.ActionFilters
         }
 
         public void OnActionExecuted(ActionExecutedContext context) {
-            _database.SaveChanges();
 
-            foreach (var entity in _database.GetChangeset())
-                foreach (var e in entity.GetEvents())
-                    _router.Publish(e);
+            foreach (var e in _database.GetChangeset().SelectMany(entity => entity.GetEvents())) {
+                _router.Publish(e);
+
+                if (typeof(Deleted<>).IsInstanceOfType(e))
+                    _database.Delete(e);
+            }
+
+            _database.SaveChanges();
         }
     }
 }

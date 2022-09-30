@@ -5,8 +5,7 @@ using DomainArchitecture.Infrastructure.Data;
 using DomainArchitecture.Infrastructure.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DomainArchitecture.Controllers
-{
+namespace DomainArchitecture.Controllers {
 
     [Route("orders")]
     public class OrderController : ControllerBase {
