@@ -4,10 +4,8 @@ using DomainArchitecture.Domain.Products;
 using DomainArchitecture.Infrastructure.Authentication;
 using DomainArchitecture.Infrastructure.Data.Entities;
 
-namespace DomainArchitecture.Domain.Users
-{
-    public class User : Entity, IsDeletable
-    {
+namespace DomainArchitecture.Domain.Users {
+    public class User : Entity, IsDeletable {
         public string PasswordHash { get; set; }
         public string Email { get; set; }
         public DateTime CreationDate { get; set; }
@@ -15,15 +13,12 @@ namespace DomainArchitecture.Domain.Users
         public DateTime? DeletionDate { get; set; }
         public List<Order> Orders { get; set; } = new();
 
-        public User()
-        {
+        public User() {
             CreationDate = DateTime.UtcNow;
         }
 
-        public bool TryLogin(IPasswordValidator validator, string password)
-        {
-            if (validator.IsValid(PasswordHash, password))
-            {
+        public bool TryLogin(IPasswordValidator validator, string password) {
+            if (validator.IsValid(PasswordHash, password)) {
                 LastLoginDate = DateTime.UtcNow;
                 return true;
             }
@@ -31,8 +26,7 @@ namespace DomainArchitecture.Domain.Users
             return false;
         }
 
-        public Order Purchase(Product product, int quantity)
-        {
+        public Order Purchase(Product product, int quantity) {
             var order = new Order(this, product, quantity);
 
             Orders.Add(order);
@@ -49,10 +43,8 @@ namespace DomainArchitecture.Domain.Users
         }
     }
 
-    public static class UserExtensions
-    {
-        public static User? ByEmail(this IQueryable<User> query, string email)
-        {
+    public static class UserExtensions {
+        public static User? ByEmail(this IQueryable<User> query, string email) {
             return query.FirstOrDefault(each => each.Email == email);
         }
     }

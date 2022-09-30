@@ -1,7 +1,8 @@
 ﻿using DomainArchitecture.Infrastructure.Data.Entities;
+using DomainArchitecture.Infrastructure.Events;
 
 namespace DomainArchitecture.Infrastructure.Data {
-    public class Repository<T> where T : HasId {
+    public class Repository<T> where T : Entity {
         private readonly IDatabase _database;
 
         public Repository(IDatabase database) {

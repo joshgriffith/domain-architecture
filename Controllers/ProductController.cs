@@ -4,6 +4,7 @@ using DomainArchitecture.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DomainArchitecture.Controllers {
+
     [Route("products")]
     public class ProductController : ControllerBase {
 
