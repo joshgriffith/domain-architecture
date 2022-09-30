@@ -32,7 +32,7 @@ namespace DomainArchitecture.Infrastructure.ActionFilters {
                 foreach (var e in entity.GetEvents()) {
                     
                     // If the entity has a Deleted event, mark it as deleted in the database
-                    if (typeof(Deleted<>).IsInstanceOfType(e))
+                    if (e.GetType().IsInstanceOfType(typeof(Deleted<>)))
                         _database.Delete(e);
 
                     // Publish each event to the router, which routes them to services. This could instead be called after the database.SaveChanges

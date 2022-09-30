@@ -1,8 +1,11 @@
 ﻿using DomainArchitecture.Infrastructure.Data.Entities;
-using DomainArchitecture.Infrastructure.Events;
 
 namespace DomainArchitecture.Infrastructure.Data {
-    public class Repository<T> where T : Entity {
+
+    /// <summary>
+    /// Abstraction so that underlying data provider can be changed
+    /// </summary>
+    public sealed class Repository<T> where T : Entity {
         private readonly IDatabase _database;
 
         public Repository(IDatabase database) {

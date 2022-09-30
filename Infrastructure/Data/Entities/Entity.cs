@@ -1,7 +1,11 @@
 ﻿using System;
 
 namespace DomainArchitecture.Infrastructure.Data.Entities {
-    public abstract class Entity : IsEntity {
+
+    /// <summary>
+    /// Base domain entity which can publish events
+    /// </summary>
+    public abstract class Entity : HasId {
         public int Id { get; set; }
         private List<object> _events { get; }
 

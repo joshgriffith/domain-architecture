@@ -2,10 +2,10 @@
 
 namespace DomainArchitecture.Infrastructure.Events {
     public class EventRouter {
-        private readonly IsObserver[] _observers;
+        private readonly IEnumerable<IsObserver> _observers;
         private readonly MethodInfo _internalPublish;
 
-        public EventRouter(params IsObserver[] observers) {
+        public EventRouter(IEnumerable<IsObserver> observers) {
             _observers = observers;
             _internalPublish = GetType().GetMethod(nameof(InternalPublish), BindingFlags.Instance | BindingFlags.NonPublic);
         }

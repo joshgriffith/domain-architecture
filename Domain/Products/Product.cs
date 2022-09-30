@@ -2,10 +2,8 @@
 using DomainArchitecture.Domain.Users;
 using DomainArchitecture.Infrastructure.Data.Entities;
 
-namespace DomainArchitecture.Domain.Products
-{
-    public class Product : Entity, IsDeletable
-    {
+namespace DomainArchitecture.Domain.Products {
+    public class Product : Entity, IsDeletable {
         public string Name { get; set; }
         public float Price { get; set; }
         public int QuantityAvailable { get; set; }
@@ -15,8 +13,7 @@ namespace DomainArchitecture.Domain.Products
         public DateTime LastUpdatedDate { get; set; }
         public DateTime? DeletionDate { get; set; }
 
-        public bool CanPurchase(User user, int quantity)
-        {
+        public bool CanPurchase(User user, int quantity) {
             if (QuantityAvailable < quantity)
                 return false;
 
